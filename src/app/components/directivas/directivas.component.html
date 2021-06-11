@@ -1,0 +1,35 @@
+<div class="container">
+  <ul class="list-group">
+    <li *ngFor="let item of directivas" class="list-group-item">
+      {{item}}
+    </li>
+  </ul>
+
+  <table *ngIf="estudiantes.length > 0" class="table table-dark table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Cuenta</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Area</th>
+      </tr>
+    </thead>
+      
+    <tbody>
+      <tr *ngFor="let item of estudiantes; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{item.cuenta}}</td>
+        <td>{{item.nombre}}</td>
+        <!-- <td [ngStyle]="{'font-weight': item.area === 'programación' ? 'bold' : 'normal'}" >{{item.area}}</td> -->
+        <td>
+          <span [ngClass]=" item.area === 'contabilidad' ? 'badge bg-secondary' : 'badge bg-primary'">{{item.area}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="estudiantes.length === 0" class="alert alert-dark text-center mt-3">
+    Cargando...
+  </div>
+
+</div>

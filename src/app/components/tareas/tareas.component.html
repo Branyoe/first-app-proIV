@@ -1,0 +1,27 @@
+<h1>Tareas por hacer <small>({{tareas.length}})</small> </h1>
+<hr>
+<div class="row">
+  <div class="col-7">
+    <ul *ngFor="let item of tareas; let i = index" class="list-group-items">
+      <li class="list-group-item">
+        <div (click)="changeHecho(i)" class="check">
+          <i *ngIf="item.hecho === false" class="far fa-check-circle"></i>
+          <i *ngIf="item.hecho === true" class="fas fa-check-circle"></i>
+        </div>
+        <span class="tarea-description">{{ item.description }}</span>
+        <i (click)="deleteTarea(i)" class="fas fa-minus-circle"></i>
+      </li>
+    </ul>
+  </div>
+  <div class="col-5">
+    <h3>Nueva tarea</h3>
+    <hr>
+    <form (ngSubmit)="addTarea()">
+      <label for="description">Descripción</label>
+      <input [(ngModel)]="newTarea" [ngModelOptions]="{standalone: true}" placeholder="escribe tu tarea" type="text"  id="description" class="form-control" autocomplete="off">
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-outline-primary mt-3">Agregar</button>
+      </div>
+    </form>
+  </div>
+</div>

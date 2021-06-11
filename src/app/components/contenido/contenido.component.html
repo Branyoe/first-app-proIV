@@ -1,0 +1,12 @@
+<h1>Bienvenido a angular</h1>
+<p>{{title}}</p>
+<p><strong> la suma de 7 + 5 es igual a {{7+5}} </strong></p>
+<hr>
+<div class="container mt-5">
+  <input type="text" class="form-control" [placeholder]="placeHolderValue" [disabled]="disabled" [(ngModel)]="nombreInput">
+  {{nombreInput}}
+  <p>
+    {{texto}}
+  </p>
+  <button class="btn btn-primary mt-2" (click)="cambiarTexto()">Cambiar información</button>
+</div>

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-contenido',
+  templateUrl: './contenido.component.html'
 })
-export class AppComponent {
+
+export class ContenidoComponent {
   title:string = 'first-app';
   placeHolderValue:string = 'Escribe tu nombre';
   disabled:boolean = false;
@@ -22,5 +22,3 @@ export class AppComponent {
     this.texto = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et sed nesciunt quod quos doloremque culpa laudantium eos ipsa, ratione, placeat reiciendis voluptate temporibus aliquid tempora dolores nihil sunt consequatur facilis.'
   }
 }
-
-
