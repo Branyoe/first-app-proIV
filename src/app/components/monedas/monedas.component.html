@@ -1,0 +1,39 @@
+<div class="container-fluid animate__animated  animate__fadeInUp vh-100">
+  <div class="row vh-100">
+    <div class="col-lg-3 bg-primary">
+      <h1 class="text-white">Monedas</h1>
+      <div class="form-floating mb-3">
+        <input (change)="calcular()" (keyup)="calcular()" class=" form-control" autofocus id="folatingInput"
+          type="number" autocomplete="off" placeholder="ejemplo: 138" [(ngModel)]="cantidad"
+          [ngModelOptions]="{standalone: true}">
+        <label for="floatingInput">Cantidad:</label>
+      </div>
+      <div class="form-floating">
+        <select (change)="calcular()" id="selTenFloa" class="form-control" [(ngModel)]="tengo">
+          <option *ngFor="let item of monedas" value="{{item}}">{{item}}</option>
+        </select>
+        <label for="selTenFloa">Tengo:</label>
+      </div>
+      <div class="form-floating mt-2 mb-4">
+        <select id="selQuiFloa" (change)="calcular()" class="form-control" [(ngModel)]="quiero">
+          <option *ngFor="let itm of monedas" value="{{itm}}">{{itm}}</option>
+        </select>
+        <label for="selQuiFloa">Quiero:</label>
+      </div>
+    </div>
+
+    <div *ngIf="cantidad > 0" class="col-lg-9 h-50 d-flex justify-content-center animate__animated animate__fadeIn  align-items-center">
+      <div class="d-flex justify-content-center">
+        <div style="width: 10rem; height: 3rem;" class="text-center m-1 bg-success rounded-pill p-2 ">
+          <span class="text-white">{{cantidad | number:'1.2-2'}}{{tengo}}</span>
+        </div>
+        <div style="width: 3rem; height: 3rem;" class="text-center m-1 bg-primary rounded-pill p-2 ">
+          <span class="text-white">=</span>
+        </div>
+        <div style="width: 10rem; height: 3rem;" class="text-center m-1 bg-success rounded-pill p-2 ">
+          <span class="text-white">{{total | number:'1.2-2'}}{{quiero}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

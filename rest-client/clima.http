@@ -1,0 +1,5 @@
+@api = api.openweathermap.org/data/2.5/weather?q=
+@apiKey = &appid=46c85bec2b2d20228dbed48330965684
+
+### GET
+GET {{api}}suchitlan{{apiKey}}

@@ -1,0 +1,84 @@
+<div class="container mt-4 animate__animated animate__fadeInUp" >
+  <div class="row justify-content-center ">
+    <div class="col-md-3 col-sm-12 animate__animated animate__fadeIn">
+      <form (ngSubmit)="buscarClima()">
+        <div class="form-floating mb-3">
+          <input class="form-control" autofocus id="folatingInput" type="text" autocomplete="off" placeholder="ejemplo: Colima"
+            [(ngModel)]="inpTXT" [ngModelOptions]="{standalone: true}" (input)="verfBqd($event)">
+          <label for="floatingInput">Escribe una ciudad</label>
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-success" type="submit">Buscar</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-7 col-sm-12" animate__animated animate__fadeIn>
+      <div *ngIf="loading" class="d-flex align-items-center justify-content-center pt-2" style="height: 100%;">
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="container mt-3 animate__animated animate__fadeIn">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+          </symbol>
+        </svg>
+        <div class="alert alert-danger alert-dismissible fade show d-flex" role="alert">
+          <div class="d-flex bi flex-shrink-0 me-2 align-items-center">
+            <svg class="" width="24" height="24" role="img" aria-label="Warning:">
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+          </div>
+          <div>
+            ¡La ciudad no fue encontrada!
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+
+      <div *ngIf="clima.length > 0" class="card animate__animated animate__fadeIn" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">Clima en {{inpTXT}}</h5>
+          <h6 *ngFor="let i of clima" class="card-subtitle mb-2 text-muted">País: {{i.sys.country}}</h6>
+          <div class="card" style="width: 100%;">
+            <ul class="list-group list-group-flush" *ngFor="let item of clima">
+              <li class="list-group-item">
+                <p class="card-text">
+                  Temp. Actual: <span class="badge rounded-pill bg-secondary">{{item.main.temp - 273.15 | number:
+                    '1.0-2'}}°</span>
+                </p>
+              </li>
+              <li class="list-group-item">
+                <p class="card-text">
+                  Sensación Term: <span class="badge rounded-pill bg-warning">{{item.main.feels_like - 273.15 | number:
+                    '1.0-2'}}°</span>
+                </p>
+              </li>
+              <li class="list-group-item">
+                <p class="card-text">
+                  Temp. Min: <span class="badge rounded-pill bg-primary">{{item.main.temp_min - 273.15 | number:
+                    '1.0-2'}}°</span>
+                </p>
+              </li>
+              <li class="list-group-item">
+                <p class="card-text">
+                  Temp. Max: <span class="badge rounded-pill bg-danger">{{item.main.temp_max - 273.15 | number:
+                    '1.0-2'}}°</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
